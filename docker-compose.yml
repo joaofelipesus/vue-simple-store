@@ -1,0 +1,10 @@
+version: '3'
+services:
+  vue-ui:
+    build: .
+    ports:
+      - "8080:8080"
+    container_name: vue-ui
+    volumes:
+       - .:/var/app
+       - ./node_modules:/usr/var/app/node_modules
