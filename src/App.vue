@@ -5,22 +5,14 @@
     </div>
 
     <div class="products">
-      <div class="product" v-for="product of products" :key="product.id">
-        <div>
-          <h2>{{ product.name }}</h2>
-        </div>
-        <div>
-          <ul>
-            <li>Preço: {{ product.price }}</li>
-            <li>Descrição: {{ product.description }}</li>
-          </ul>
-        </div>
-      </div>
+      <product-card :productData="product" v-for="product of products" :key="product.id"></product-card>
     </div>
   </div>
 </template>
 
 <script>
+import Product from './components/product/Product.vue'
+
 export default {
   name: 'app',
   data () {
@@ -28,7 +20,9 @@ export default {
       products: []
     }
   },
-
+  components: {
+    'product-card': Product
+  },
   created() {
     let promise = this.$http.get('http://localhost:3000/api/products')
     promise.then(response => response.json())
