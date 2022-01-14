@@ -1,15 +1,19 @@
 <template>
-  <div class="product">
-    <div>
+  <div class="col-4 mb-5 ">
+    <div class="product card">
+    <div class="card-header text-center">
       <h2>{{ productData.name }}</h2>
     </div>
-    <div>
-      <ul>
-        <li>Preço: {{ productData.price }}</li>
-        <li>Descrição: {{ productData.description }}</li>
-      </ul>
+    <div class="card-body text-left">
+      <p>Preço: {{ price }}</p>
+      <p>Descrição: {{ description }}</p>
+      <span v-for="category of productData.categories" :key="category.id" class="badge bg-success">
+        {{ category.name }}
+      </span>
     </div>
   </div>
+  </div>
+
 </template>
 
 <script>
@@ -19,10 +23,26 @@ export default {
       type: Object,
       required: true
     }
+  },
+  computed: {
+    price() {
+      return this.productData.price.replace(".", ",")
+    },
+    description() {
+      const productDescription = this.productData.description;
+      if (productDescription.length <= 50)
+        return productDescription
+      else if (productDescription.length > 50) {
+        return productDescription.slice(0, 50) + " ...";
+      }
+    }
+
   }
 }
 </script>
 
 <style scoped>
-
+  /* .card-body {
+    height: 10em;
+  } */
 </style>
