@@ -3,6 +3,20 @@
     <div>
       <h1>Bem vindo</h1>
     </div>
+
+    <div class="products">
+      <div class="product" v-for="product of products" :key="product.id">
+        <div>
+          <h2>{{ product.name }}</h2>
+        </div>
+        <div>
+          <ul>
+            <li>Preço: {{ product.price }}</li>
+            <li>Descrição: {{ product.description }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
