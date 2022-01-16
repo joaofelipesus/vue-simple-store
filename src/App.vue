@@ -41,7 +41,8 @@ export default {
       //   - elastic: uses elastic search
       //   - index: uses a search index
       //   - ilike: uses ordinary text search using ILIKE operator
-      const engine = 'index'
+      this.products = []
+      const engine = 'elastic'
       let promise = this.$http.get(`http://localhost:3000/api/products?engine=${engine}&search_by=${this.searchProduct}`)
           promise.then(response => response.json())
             .then(products => this.products = products)
