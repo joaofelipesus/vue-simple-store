@@ -7,7 +7,7 @@
     <div class="card-body text-left">
       <p>Preço: {{ price }}</p>
       <p>Descrição: {{ description }}</p>
-      <span v-for="category of productData.categories" :key="category.id" class="badge bg-success">
+      <span v-for="category of productData.categories" :key="category.id" class="badge me-2" :style="`background-color: ${category.badge_color};`">
         {{ category.name }}
       </span>
     </div>
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped>
-  /* .card-body {
-    height: 10em;
-  } */
+  .card-body {
+    height: 12em;
+  }
 </style>
